@@ -1,0 +1,31 @@
+[project]
+name = "optimal-search-research"
+version = "1.0.0"
+description = "Reproducible Python models and numerical verification of radar detection efficiency, Bayesian search, and search-effort allocation."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.5.4",
+    "scipy>=1.18.1",
+]
+
+[project.urls]
+Repository = "https://github.com/ckinla/optimal-search-research"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/optimal_search"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

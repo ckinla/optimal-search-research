@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+      - name: Install locked dependencies (Python 3.12)
+        run: uv sync --locked
+      - name: Run the test suite
+        run: uv run pytest
+      - name: Run the README examples
+        run: |
+          uv run python examples/detection_efficiency.py
+          uv run python examples/bayesian_update.py
+          uv run python examples/greedy_vs_exact.py
+          uv run python examples/essay_numbers.py
