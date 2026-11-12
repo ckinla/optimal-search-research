@@ -349,6 +349,14 @@ def test_wilson_interval_known_values():
     assert proportion_confidence_interval(10, 10)[1] == 1.0
 
 
+def test_wilson_interval_endpoints_are_exact_at_zero_and_all_successes():
+    # Rounding once left the lower end ~1e-17 above 0 for some n and levels, platform-dependently.
+    for n in range(1, 401):
+        for level in (0.8, 0.9, 0.95, 0.99):
+            assert proportion_confidence_interval(0, n, level)[0] == 0.0
+            assert proportion_confidence_interval(n, n, level)[1] == 1.0
+
+
 def test_clopper_pearson_interval_known_values():
     assert proportion_confidence_interval(0, 10, method="clopper-pearson")[1] == pytest.approx(1 - 0.025 ** (1 / 10), rel=1e-12)  # closed form, k = 0
     assert proportion_confidence_interval(10, 10, method="clopper-pearson")[0] == pytest.approx(0.025 ** (1 / 10), rel=1e-12)

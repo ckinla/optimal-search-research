@@ -209,7 +209,10 @@ def proportion_confidence_interval(
         denominator = 1.0 + z * z / n
         center = (p_hat + z * z / (2.0 * n)) / denominator
         half = z * math.sqrt(p_hat * (1.0 - p_hat) / n + z * z / (4.0 * n * n)) / denominator
-        return max(0.0, center - half), min(1.0, center + half)
+        # In exact arithmetic the interval starts at 0 when k = 0 and ends at 1 when k = n; rounding can miss by ~1e-17.
+        lower = 0.0 if k == 0 else max(0.0, center - half)
+        upper = 1.0 if k == n else min(1.0, center + half)
+        return lower, upper
     lower = 0.0 if k == 0 else float(beta.ppf(alpha / 2.0, k, n - k + 1))
     upper = 1.0 if k == n else float(beta.ppf(1.0 - alpha / 2.0, k + 1, n - k))
     return lower, upper
