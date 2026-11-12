@@ -7,8 +7,9 @@
 A radar can make one strong look or several weaker ones, and it must decide where to look next after a miss. This
 repository contains reproducible Python models, tests and numerical checks for both questions:
 
-- **How strong should each look be?** For independent looks, there is an efficient strength per look that reaches a
-  detection goal on the least total energy: 11.416 dB at a false-alarm probability of 10⁻⁵.
+- **How strong should each look be?** With independent, continuously divisible looks, a reproduced local
+  detection-efficiency maximum occurs at 11.416 dB at a false-alarm probability of 10⁻⁵. It locally minimizes the
+  energy for a fixed detection goal, not the energy over unrestricted strengths or integer look counts.
 - **Where should the next look go?** After each miss, Bayes' rule moves belief away from the place just searched.
   Searching where the immediate payoff per cost is highest is a good rule, but under a finite budget with unequal
   costs it can lose to a plan that looks further ahead.
@@ -169,6 +170,9 @@ looks and search payoff, including an explicit detection condition.
 - [`docs/monte-carlo-spatial-search.md`](docs/monte-carlo-spatial-search.md): the simulation engine and its intervals.
 
 ## Maintenance
+
+See the [publication audit and release process](docs/publication-audit.md) for inclusion decisions, the numerical
+boundary correction, and the manual procedure for keeping the published release and the essay in agreement.
 
 This repository is a published release of the Python research behind Optimal Search Lab. The models in
 `src/optimal_search/` are maintained in the lab's development repository, which also holds a separate TypeScript

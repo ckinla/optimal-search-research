@@ -7,9 +7,10 @@ is credited to the wrong source. It is not a priority survey or a claim of novel
 
 Evidence labels used below:
 
-- **Transcribed:** equations or worked examples read from a copy of the source held by the authors. Each
-  transcription is encoded in a test and evaluated; tests check the *mathematics* of the transcription, not that
-  every glyph was read correctly.
+- **Transcribed:** equations or worked examples preserved in the development project's source-comparison notes.
+  This publication was checked against those recorded notes, not a fresh inspection of original documents.
+  Each transcription is encoded in a test and evaluated; tests check the *mathematics* of the transcription,
+  not that every glyph was read correctly. Original documents are not bundled here.
 - **Abstract only:** the publisher's record or an author abstract was read; no full text was available to us.
 - **Reproduced:** independently calculated and tested in this repository.
 - **Ours:** a model, analysis or example we built. It is not attributed to Matthiesen.
